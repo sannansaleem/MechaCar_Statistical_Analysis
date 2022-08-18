@@ -12,13 +12,13 @@
 
 From the above output we can see that:
 
-1. The **vehicle length**, and **vehicle ground clearance** are statistically likely to provide non-random amounts of variance to the model. That is to say, the vehicle length and vehicle ground clearance have a significant impact on miles per gallon on the MechaCar prototype. Conversely,
-the **vehicle weight**, **spoiler angle**, and **All Wheel Drive** (AWD) have p-Values that indicate a random amount of variance with the dataset.  
+1. The **vehicle length**, and **vehicle ground clearance** hold a significant impact on miles per gallon on the MechaCar prototype. Conversely,
+the **vehicle weight**, **spoiler angle**, and **All Wheel Drive** (AWD) have p-Values that indicate a random amount of variance with the dataset i.e. they are not statistically significant.  
 
-2. The p-Value for this model, ```p-Value: 5.35e-11```, is much smaller than the assumed significance level of 0.05%. This indicates there is sufficient evidence to **reject our null hypothesis**, which further indcates that the slope of this linear model is **not zero**.
+2. The p-Value for this model, ```p-Value: 5.35e-11```, is much smaller than the assumed significance level of 0.05. This indicates there is sufficient evidence to **reject our null hypothesis**.
 
 
-3.  This linear model has an r-squared value of 0.7149, which means that approximately 71% of all mpg predictions will be determined by this model. Relatively speaking, his multiple regression model **does predict mpg of MechaCar prototypes effectively**.
+3.  This linear model has an r-squared value of 0.7149, which means that approximately 71.49% of all mpg predictions will be determined by this model. Relatively speaking, his multiple regression model **does predict mpg of MechaCar prototypes effectively**.
 
 # Deliverable 2:  
 ## Summary Statistics on Suspension Coils
@@ -35,9 +35,7 @@ Diving a little deeper into each of the 3 lots:
 <img src="img/lot_summary.png" width="50%" height="50%">
 </p>
 
-With the understanding that the design specifications for the MechaCar suspension coils mandate that <mark style="background-color: Yellow">**the variance of the suspension coils cannot exceed 100 pounds per square inch (PSI)**</mark> . 
-
-Does the current manufacturing data meet this design specification for all manufacturing lots in total and each lot individually? Why or why not?
+With the understanding that the design specifications for the MechaCar suspension coils mandate that <mark style="background-color: Yellow">**the variance of the suspension coils cannot exceed 100 pounds per square inch (PSI)**</mark>.
 
 When looking at the entire population of the production lot, the variance of the coils is 62.29 PSI, which is well within the 100 PSI variance requirement.  
 
@@ -70,30 +68,51 @@ How does this information help?  Clearly, something went awry in Lot 3's product
 # Deliverable 4:  
 ## Study Design: MechaCar vs Competition
 
-This study would involve collecting data on MechaCar and its comparable models across several different manufacturers over the last 3 years.
+The following outlines a statistical study to compare the MechaCar to the competition. Below are explained the metrics to measure, the hypothesis, the test to use, and the data needed.
 
-* What are the competitions' comparable models, 
-* Which cars will MechaCar be competing with head-to-head? which cars will be included in the study?
-* Which factors will look at the study to determine the relevant to selling price?
- 
+### 1. What metric or metrics are you going to test?
 
-#### Metrics
-Collecting data for comparable models across all major manufacturers for past 3 years for the following metrics:
+In order to analysis the MechaCar’s performance against the competition, I will measure the following three metrics:
+-	Cost
+-	Fuel efficiency
+-	Safety rating
 
-*  Safety Feature Rating: **Independent Variable**
-*  Current Price (Selling): **Dependent Variable**
-*  Drive Package : **Independent Variable**
-*  Engine (Electric, Hybrid, Gasoline / Conventional): **Independent Variable**
-*  Resale Value: **Independent Variable**
-*  Average Annual Cost of ownership (Maintenance): **Independent Variable**
-*  MPG (Gasoline Efficiency): **Independent Variable**
+These three metrics are often considered by consumers when purchasing a car. Cost is often the No.1 factor, as most people would set a budget before browsing options and compare options based on cost. Furthermore, fel efficiency is another important variable that has to be taken into account as it is important to understand the estimated cost of operating the vehicle, a higher fuel efficiency can be a better option even when cost of the vehicle is higher. Finally, safety rating is also considered within the experiment, Vehicles with high safety ratings generally have enhaced safety features such as more airbags, loweer centre of gravity, etc. and is then assigned a saftey score by a governing body.
 
 
-#### Hypothesis: Null and Alternative
-After determining which factors are key for the MechaCar's genre:
+### 2. What is the null hypothesis or alternative hypothesis?
 
- * Null Hypothesis (Ho): MechaCar is priced correctly based on its performance of key factors for its genre.
- * Alternative Hypothesis (Ha): MechaCar is NOT priced correctly based on performance of key factors for its genre.
- 
-#### Statistical Tests
-A **multiple linear regression** would be used to determine the factors that have the highest correlation/predictability with the list selling price (dependent variable); which combination has the greatest impact on price (it may be all of them!)
+**Cost:**
+
+_Null Hypothesis:_ The mean cost of all vehicles in this class are equal.
+
+_Alternative Hypothesis:_ At least one of the vehicles in this class has a different mean cost than other vehicles.
+
+**Fuel efficiency:**
+
+_Null Hypothesis:_ The mean of fuel efficiency (measured in mpg) of all vehicles in this class are equal.
+
+_Alternative Hypothesis:_ At least one of the vehicles in this class has a different mean of fuel efficiency than other vehicles.
+
+**Safety rating:**
+
+_Null Hypothesis:_ The mean of safety ratings of all vehicles in this class are equal.
+
+_Alternative Hypothesis:_ At least one of the vehicles in this class has a different mean of safety rating than other vehicles.
+
+### 3. What statistical test would you use to test the hypothesis? And why?
+
+The use of an ANOVA test for this study would be appropriate as it can be used to compare the means of a continuous numerical variable across multiple groups.
+
+**Cost and Saftey Rating**
+
+One-Way ANOVA test. This test will be used to test the mean cost of MechaCar with multiple other competition vehicles’ mean cost's and safety ratings in the same class. 
+
+**Fuel efficiency:**
+
+Two-Way ANOVA test. This test will be used to test the mean of fuel efficiency of MechaCar with multiple other competition vehicles’ mean fuel efficiency in the same class. In addition, I want to test for two different independent variables: the fuel efficiency in city and on highway. 
+
+
+### 4. What data is needed to run the statistical test?
+
+I would need a sample size of MechaCars (preferably the larger the sample size the better according to the law of large numbers), the same amount of each other 4 competition vehicles in the same class, to be able to provide an unbiased test. Data on these cars would have to be provided or obtained from the manufacturer (MRSP for cost, and in house testing for feul effciency and safety should be conducted as tests preformed are usually under ideal conditions... that is ideal for the manufacturer and not necisarily indicative of real life).
